@@ -33,5 +33,8 @@ module DogwalkerApi
     config.api_only = true
     config.eager_load_paths << Rails.root.join('lib')
     config.middleware.use Rack::Attack
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end
