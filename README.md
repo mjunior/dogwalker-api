@@ -19,7 +19,7 @@ Seu desafio será pensar em uma estrutura que suporte usuários a pedir esse nov
 
 - Pode desconsiderar qualquer tipo de autenticação e o retorno da API deve ser JSON.
 
-# Docs!
+# APIs!
 <details>
 <summary>Listar passeios</summary>
 <pre>`GET: /dog_walkings?all=[true,false]&page=[number]`</pre>
