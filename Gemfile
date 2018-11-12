@@ -31,7 +31,7 @@ gem 'rack-cors', require: 'rack/cors'
 # Rack middleware for blocking & throttling
 gem 'rack-attack'
 gem 'fast_jsonapi'
-
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
