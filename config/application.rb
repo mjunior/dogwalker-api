@@ -32,6 +32,7 @@ module DogwalkerApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.eager_load_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('services')
     config.middleware.use Rack::Attack
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
