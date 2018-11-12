@@ -12,18 +12,18 @@ class V1::DogWalkingsController < ApplicationController
   def start_walk
     return head :not_found if @walk.nil?
     return head :ok if @walk.start! 
-    render json: errors(@walk)
+    render json: errors(@walk), status: :unprocessable_entity
   end
 
   def finish_walk
     return head :not_found if @walk.nil?
     return head :ok if @walk.finish! 
-    render json: errors(@walk)
+    render json: errors(@walk), status: :unprocessable_entity
   end
 
   def create
     walk = DogWalking.new(walk_params)
-    return render json: errors(walk) unless walk.save
+    return render json: errors(walk), status: :unprocessable_entity unless walk.save
     render json: V1::DogWalkingSerializer.new(walk).serialized_json, status: :ok
   end
 

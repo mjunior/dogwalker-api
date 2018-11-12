@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'DogWalking index Api', type: :request do
+RSpec.describe 'DogWalking Create With Errors Api', type: :request do
 
-  describe 'GET /dog_walking' do
+  describe 'POST /dog_walking' do
     context "When invalid attributes" do
       before do
         Product.create({
@@ -17,6 +17,12 @@ RSpec.describe 'DogWalking index Api', type: :request do
         attrs = attributes_for(:dog_walking,schedule_date: Time.now + 1.hours, duration: 30, pets: 0 )
         post '/dog_walkings', params: {dog_walking: attrs}
         expect(json_body[:errors].nil?).to be_falsey  
+      end
+
+      it 'returns status unprocessable_entity' do
+        attrs = attributes_for(:dog_walking,schedule_date: Time.now + 1.hours, duration: 30, pets: 0 )
+        post '/dog_walkings', params: {dog_walking: attrs}
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it 'returns must be greater than 0' do

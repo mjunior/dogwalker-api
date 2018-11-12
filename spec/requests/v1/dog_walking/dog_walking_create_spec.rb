@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'DogWalking index Api', type: :request do
+RSpec.describe 'DogWalking Create Without Errors Api', type: :request do
 
   describe 'GET /dog_walking' do
     context "When valid attributes" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'DogWalking Finish Walk Api', type: :request do
+RSpec.describe 'DogWalking Finish Errors Api', type: :request do
 
   describe 'GET /dog_walking/:id/finish_start' do
     context "When to finish a walk that is scheduled" do
@@ -17,6 +17,10 @@ RSpec.describe 'DogWalking Finish Walk Api', type: :request do
       end
       it 'returns errors' do
         expect(json_body.has_key?(:errors)).to be_truthy
+      end
+
+      it 'returns status unprocessable_entity' do
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it 'returns message error' do

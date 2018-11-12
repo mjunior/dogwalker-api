@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'DogWalking Start Walk Api', type: :request do
+RSpec.describe 'DogWalking Start Errors Api', type: :request do
 
   describe 'GET /dog_walking/:id/start_walki' do
     context "When to start a walk that is in progress" do
@@ -20,6 +20,10 @@ RSpec.describe 'DogWalking Start Walk Api', type: :request do
         expect(json_body.has_key?(:errors)).to be_truthy
       end
 
+      it 'returns status unprocessable_entity' do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+      
       it 'returns message error' do
         expect(json_body[:errors][:status]).to include("invalid change status 'in_progress' to 'in_progress'")
       end

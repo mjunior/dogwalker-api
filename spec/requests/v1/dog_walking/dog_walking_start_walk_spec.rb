@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'DogWalking Start Walk Api', type: :request do
+RSpec.describe 'DogWalking Start Without errors Api', type: :request do
 
   describe 'GET /dog_walking/:id/start_walki' do
     context "When start walk with a valid uuid" do
