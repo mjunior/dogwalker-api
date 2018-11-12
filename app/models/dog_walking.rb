@@ -1,10 +1,11 @@
 class DogWalking < ApplicationRecord
   enum status: [:scheduled, :in_progress, :finished]
   validates :duration, inclusion: { in: [30,60], message: "%{value} is not a valid duration" }
-  validates :status, :latitude, :longitude, :pets, :duration, :price, :schedule_date, presence: :true
+  validates_numericality_of :pets, greater_than: 0
+  
+  validates :status, :latitude, :longitude, :pets, :duration, :schedule_date, presence: :true
   validate :check_status, on: :update
-
-  before_validation :calculate_price
+  before_save :calculate_price
   
   def calculate_price
     self.price = PriceCalculator.new(self).calculate

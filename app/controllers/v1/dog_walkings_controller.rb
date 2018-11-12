@@ -11,20 +11,28 @@ class V1::DogWalkingsController < ApplicationController
 
   def start_walk
     return head :not_found if @walk.nil?
-    @walk.start!
-    return head :ok if @walk.valid? 
-    render json: { errors: @walk.errors }
+    return head :ok if @walk.start! 
+    render json: errors(@walk)
   end
 
   def finish_walk
     return head :not_found if @walk.nil?
-    @walk.finish!
-    return head :ok if @walk.valid? 
-    render json: { errors: @walk.errors }
+    return head :ok if @walk.finish! 
+    render json: errors(@walk)
+  end
+
+  def create
+    walk = DogWalking.new(walk_params)
+    return render json: errors(walk) unless walk.save
+    render json: V1::DogWalkingSerializer.new(walk).serialized_json, status: :ok
   end
 
   private 
   def set_walk
     @walk = DogWalking.find_by(id: params[:id])
+  end
+
+  def walk_params
+    params.require(:dog_walking).permit(:schedule_date, :duration, :latitude, :longitude, :pets)
   end
 end
