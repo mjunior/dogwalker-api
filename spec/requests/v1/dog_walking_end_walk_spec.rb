@@ -13,6 +13,7 @@ RSpec.describe 'DogWalking End Walk Api', type: :request do
         })
         create_list(:dog_walking, 5, schedule_date: Time.now + 1.hours, duration: 60, pets: 1)
         @walk = DogWalking.all.sample
+        @walk.start!
         patch "/dog_walkings/#{@walk.id}/finish_walk", params: {}
       end
       it 'returns status :OK 200' do
@@ -40,6 +41,7 @@ RSpec.describe 'DogWalking End Walk Api', type: :request do
         })
         create_list(:dog_walking, 5, schedule_date: Time.now + 1.hours, duration: 60, pets: 1, start_date: Time.now + 1.hours, end_date: (Time.now + 2.hours) + 2.minutes )
         @walk = DogWalking.all.sample
+        @walk.start!
         patch "/dog_walkings/nao_existe/finish_walk", params: {}
       end
       it 'returns status :not_found 404' do

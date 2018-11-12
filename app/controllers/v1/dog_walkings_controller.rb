@@ -11,14 +11,16 @@ class V1::DogWalkingsController < ApplicationController
 
   def start_walk
     return head :not_found if @walk.nil?
-    @walk.start
-    head :ok
+    @walk.start!
+    return head :ok if @walk.valid? 
+    render json: { errors: @walk.errors }
   end
 
   def finish_walk
     return head :not_found if @walk.nil?
-    @walk.finish
-    head :ok
+    @walk.finish!
+    return head :ok if @walk.valid? 
+    render json: { errors: @walk.errors }
   end
 
   private 

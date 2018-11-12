@@ -13,6 +13,7 @@ RSpec.describe 'DogWalking Show Api', type: :request do
         })
         create_list(:dog_walking, 5, schedule_date: Time.now + 1.hours, duration: 60, pets: 1, start_date: Time.now + 1.hours, end_date: (Time.now + 2.hours) + 2.minutes )
         @walk = DogWalking.all.sample
+        @walk.in_progress!
         @walk.finished!
         get "/dog_walkings/#{@walk.id}", params: {}
       end
