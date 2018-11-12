@@ -1,5 +1,5 @@
 class V1::DogWalkingsController < ApplicationController
-  before_action :set_walk, only: [:show,:start_walking, :end_walking]
+  before_action :set_walk, only: [:show,:start_walk, :end_walking]
   def index
     opts, result = DogWalkingListQuery.new(params).call
     render json: V1::DogWalkingSerializer.new(result,opts).serialized_json, status: :ok
@@ -7,6 +7,12 @@ class V1::DogWalkingsController < ApplicationController
 
   def show
     render json: V1::DogWalkingSerializer.new(@walk).serialized_json, status: :ok
+  end
+
+  def start_walk
+    return head :not_found if @walk.nil?
+    @walk.in_progress!
+    head :ok
   end
 
   private 
