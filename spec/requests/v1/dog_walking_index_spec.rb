@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'DogWalking Api', type: :request do
+RSpec.describe 'DogWalking index Api', type: :request do
 
   describe 'GET /dog_walking' do
     context "When to list only future walks" do

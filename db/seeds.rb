@@ -30,7 +30,7 @@ Product.create({
     longitude: -46.8823115,
     pets: [1,2,3].sample,
     start_date: schedule,
-    end_date: schedule + duration.hours
+    end_date: schedule + duration.minutes
   }
   DogWalking.create(attr)
 end
@@ -46,7 +46,7 @@ end
     longitude: -46.8823115,
     pets: [1,2,3].sample,
     start_date: schedule,
-    end_date: schedule + duration.hours
+    end_date: schedule + duration.minutes
   }
   DogWalking.create(attr)
 end
