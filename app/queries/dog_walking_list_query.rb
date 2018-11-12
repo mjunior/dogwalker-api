@@ -2,7 +2,7 @@ class DogWalkingListQuery < BaseQuery
   def initialize params
     @relation = DogWalking.all
     @now = Time.now
-    @all = params[:all]
+    @all = params[:all] == 'true' ? true : false
     super(params)
   end
   
