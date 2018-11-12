@@ -8,4 +8,8 @@ class DogWalking < ApplicationRecord
   def calculate_price
     self.price = PriceCalculator.new(self).calculate
   end
+
+  def start
+    self.update_attributes(status: :in_progress, start_date: Time.now )
+  end
 end

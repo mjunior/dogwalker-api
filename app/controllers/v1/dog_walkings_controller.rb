@@ -11,7 +11,7 @@ class V1::DogWalkingsController < ApplicationController
 
   def start_walk
     return head :not_found if @walk.nil?
-    @walk.in_progress!
+    @walk.start
     head :ok
   end
 
