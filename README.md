@@ -1,7 +1,7 @@
 - [O Desafio](https://github.com/mjunior/dogwalker-api#dogwalker-challenge)
-- [API DOCS](https://github.com/mjunior/dogwalker-api#apis)
-- [SPECS](https://github.com/mjunior/dogwalker-api#specs)
-- [ENVIRONMENT](https://github.com/mjunior/dogwalker-api#environment)
+- [Documentação API](https://github.com/mjunior/dogwalker-api#apis)
+- [Testes relaizados](https://github.com/mjunior/dogwalker-api#specs)
+- [Ambiente de desenvolvimento](https://github.com/mjunior/dogwalker-api#environment)
 
 # DogWalker Challenge
 Seu desafio será pensar em uma estrutura que suporte usuários a pedir esse novo serviço para seus peludos. Algumas observações:
