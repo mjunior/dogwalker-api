@@ -12,4 +12,8 @@ class DogWalking < ApplicationRecord
   def start
     self.update_attributes(status: :in_progress, start_date: Time.now )
   end
+
+  def finish
+    self.update_attributes(status: :finished, end_date: Time.now )
+  end
 end

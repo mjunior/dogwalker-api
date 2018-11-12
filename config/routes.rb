@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :dog_walkings do
       member  do
         patch 'start_walk'
+        patch 'end_walk'
       end
     end
   end
