@@ -33,10 +33,18 @@ gem 'rack-attack'
 gem 'fast_jsonapi'
 gem 'kaminari'
 
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'faker'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
