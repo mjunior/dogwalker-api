@@ -150,6 +150,89 @@ Seu desafio será pensar em uma estrutura que suporte usuários a pedir esse nov
 </details>
 
 
+<details>
+<summary>Retorno de Errors</summary>
+  <p>Um Hash de Erros é retornado. Cada Key deste Hash é referente ao campo invaliado. Um Array de String é retornado em cada Key com as mensagens de error</p>
+<br>
+  <pre>
+{
+    "errors": {
+        "duration": [
+            "20.0 is not a valid duration"
+        ],
+        "pets": [
+            "must be greater than 0"
+        ]
+    }
+}
+  </pre>
+</details>
+
+## Specs
+```json
+DogWalking
+  .create
+     creates with a correct price for more than one pets
+     creates with a correct price for one pet
+     creates with a correct status
+     
+
+DogWalking Create With Errors Api
+  POST /dog_walking
+    When invalid attributes
+      returns message errors messages
+      returns status unprocessable_entity
+      returns must be greater than 0
+      returns schedule_date can't be blank
+      returns duration is not valid
 
 
+DogWalking Create Without Errors Api
+  GET /dog_walking
+    When valid attributes
+      returns status :OK
+      returns a walk
+      returns walk with correct status
+      returns walk with a price
+
+DogWalking Finish Errors Api
+  GET /dog_walking/:id/finish_start
+    When to finish a walk that is scheduled
+      returns errors
+      returns status unprocessable_entity
+      returns message error
+    When to finish a walk alredy finished
+      returns errors
+      returns message error
+
+DogWalking End Without Errors Api
+  GET /dog_walking/:id/finish_walk
+    When start walk with a valid uuid
+      returns status :OK 200
+      changes walk status to finished
+      changes walk end_date
+    When Finish with a invalid uuid
+      returns status :not_found 404
+
+DogWalking index Api
+  GET /dog_walking
+    When to list only future walks
+      returns status :OK
+      returns a list of dog walkings
+    When to list all walks
+      returns status :OK
+      returns a list of dog walkings
+
+DogWalking Show Api
+  GET /dog_walking/:id
+    When to list only future walks
+      returns status :OK
+      returns a correct walk
+      returns correct realtime duration
+
+DogWalking Start Errors Api
+  GET /dog_walking/:id/start_walki
+    When to start a walk that is in progress
+      returns errors
+```
 
