@@ -1,7 +1,7 @@
 - [O Desafio](https://github.com/mjunior/dogwalker-api#dogwalker-challenge)
 - [Documentação API](https://github.com/mjunior/dogwalker-api#apis)
 - [Testes relaizados](https://github.com/mjunior/dogwalker-api#specs)
-- [Ambiente de desenvolvimento](https://github.com/mjunior/dogwalker-api#environment)
+- [Rodando o projeto](https://github.com/mjunior/dogwalker-api#docker)
 
 # DogWalker Challenge
 Seu desafio será pensar em uma estrutura que suporte usuários a pedir esse novo serviço para seus peludos. Algumas observações:
@@ -174,6 +174,9 @@ Seu desafio será pensar em uma estrutura que suporte usuários a pedir esse nov
 </details>
 
 ## Specs
+
+`docker-compose run --rm app bundle exec rspec -fd`
+
 ```json
 DogWalking
   .create
@@ -242,8 +245,10 @@ DogWalking Start Errors Api
 ```
 
 
-## Environment
+## Docker
 
-- Ruby 2.5.1
-- Rails 5.2.1
-- PostgreSQL
+docker-compose build
+
+docker-compose run --rm app bundle exec rails db:create db:migrate db:seed
+
+docker-compose up
