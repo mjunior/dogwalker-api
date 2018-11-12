@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'DogWalking End Walk Api', type: :request do
 
-  describe 'GET /dog_walking/:id/start_walki' do
+  describe 'GET /dog_walking/:id/finish_walk' do
     context "When start walk with a valid uuid" do
       before do
         Product.create({
@@ -13,7 +13,7 @@ RSpec.describe 'DogWalking End Walk Api', type: :request do
         })
         create_list(:dog_walking, 5, schedule_date: Time.now + 1.hours, duration: 60, pets: 1)
         @walk = DogWalking.all.sample
-        patch "/dog_walkings/#{@walk.id}/end_walk", params: {}
+        patch "/dog_walkings/#{@walk.id}/finish_walk", params: {}
       end
       it 'returns status :OK 200' do
         expect(response).to have_http_status(:ok)
@@ -40,7 +40,7 @@ RSpec.describe 'DogWalking End Walk Api', type: :request do
         })
         create_list(:dog_walking, 5, schedule_date: Time.now + 1.hours, duration: 60, pets: 1, start_date: Time.now + 1.hours, end_date: (Time.now + 2.hours) + 2.minutes )
         @walk = DogWalking.all.sample
-        patch "/dog_walkings/nao_existe/start_walk", params: {}
+        patch "/dog_walkings/nao_existe/finish_walk", params: {}
       end
       it 'returns status :not_found 404' do
         expect(response).to have_http_status(:not_found)
